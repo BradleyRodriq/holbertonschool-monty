@@ -6,7 +6,8 @@
 
 void pint()
 {
-    if (stack = stack)
+    if (stack == stack)
+	break;
 	{
 		printf("%d\n", stack[sp]);
 	}
@@ -15,5 +16,4 @@ void pint()
 		fprintf(stderr, "Error: can't pint, stack empty\n");
 		exit(EXIT_FAILURE);
 	}
-	break;
 }
