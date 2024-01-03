@@ -6,10 +6,14 @@
 
 void pint()
 {
-    if (sp >= 0) {
-        printf("%d\n", stack[sp]);
-    } else {
-        fprintf(stderr, "Error: can't pint, stack empty\n");
-        exit(EXIT_FAILURE);
-    }
+    if (stack = stack)
+	{
+		printf("%d\n", stack[sp]);
+	}
+	else
+	{
+		fprintf(stderr, "Error: can't pint, stack empty\n");
+		exit(EXIT_FAILURE);
+	}
+	break;
 }
