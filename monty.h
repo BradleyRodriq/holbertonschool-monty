@@ -1,33 +1,42 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef MONTY_H
+#define MONTY_H
 
 #include <stdio.h>
 #include <stdlib.h>
 
+#define STACK_SIZE 100
+
 /**
- * struct StackNode - Structure for a stack node
- * @data: Integer data of the node
- * @next: Pointer to the next node in the stack
+ * struct stack_t - Stack structure
+ * @array: The array representing the stack
+ * @sp: The stack pointer pointing to the top of the stack
  */
-typedef struct StackNode
+typedef struct stack_t
 {
-    int data;
-    struct StackNode *next;
-} StackNode;
+	int array[STACK_SIZE];
+	int sp;
+} stack_t;
+
+
 
 /**
  * push - Pushes a value onto the stack
- * @top: Pointer to the top of the stack
- * @value: Value to be pushed onto the stack
+ * @value: The value to be pushed onto the stack
  */
-void push(StackNode **top, int value);
+void push(int value);
 
 /**
- * pint - Prints the value at the top of the stack
- * @top: Pointer to the top of the stack
- * @line_number: Line number in the file
+ * pop - Pops a value from the stack
+ *
+ * Return: The value popped from the stack
  */
-void pint(StackNode *top, unsigned int line_number);
+int pop(void);
+
+/**
+ * pint - Prints the value at the top of the stack, followed by a new line
+ * If the stack is empty, prints an error message and exits with EXIT_FAILURE
+ */
+void pint(void);
 
 #endif
 
