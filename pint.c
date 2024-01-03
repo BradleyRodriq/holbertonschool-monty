@@ -8,7 +8,7 @@ void pint()
 {
     if (stack == stack)
 	{
-		printf("%d\n", stack[sp]);
+		printf("%d\n", stack);
 		break;
 	}
 	else
