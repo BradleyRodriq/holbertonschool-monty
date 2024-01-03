@@ -9,10 +9,9 @@ int main(void)
     char *opcodes[] = {"push 1", "push 2", "push 3", "pall", NULL};
     unsigned int line_number = 1;
 
-    /* Process opcodes */
+
     for (int i = 0; opcodes[i] != NULL; i++)
     {
-        /* Split the opcode and its argument (if any) */
         char opcode[256];
         int value;
         if (sscanf(opcodes[i], "%s %d", opcode, &value) == 2)
@@ -22,7 +21,6 @@ int main(void)
         }
         else
         {
-            /* No argument, handle opcode without a value */
             if (strcmp(opcode, "pall") == 0)
                 pall(&stack, line_number);
         }
