@@ -5,30 +5,32 @@
 #include <ctype.h>
 
 /**
-* push - pushes an element to the stack
-* @stack: a pointer to the first element
-* @value: the value to be added
-*/
+ * push - pushes an element to the stack
+ * @stack: a pointer to the first element
+ * @value: the value to be added
+ * @line_number: the number of the lines
+ */
 void push(stack_t **stack, int value, unsigned int line_number)
 {
-    (void) line_number;
-    
-    stack_t *new_node = malloc(sizeof(stack_t));
-    if (new_node == NULL)
-    {
-        fprintf(stderr, "Error: malloc failed\n");
-        exit(EXIT_FAILURE);
-    }
-    if(new_node != NULL)
+	(void) line_number;
 
-    new_node->n = value;
-    new_node->prev = NULL;
-    new_node->next = *stack;
+	stack_t *new_node = malloc(sizeof(stack_t));
 
-    if (*stack != NULL)
-    {
-    (*stack)->prev = new_node;
-    }
+	if (new_node == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	if (new_node != NULL)
 
-    *stack = new_node;
+		new_node->n = value;
+	new_node->prev = NULL;
+	new_node->next = *stack;
+
+	if (*stack != NULL)
+	{
+		(*stack)->prev = new_node;
+	}
+
+	*stack = new_node;
 }

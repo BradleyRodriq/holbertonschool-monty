@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		fclose(file);
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
 	stack_t *stack = NULL;
@@ -85,12 +85,16 @@ void process_line(stack_t **stack, const char *line, unsigned int line_number)
 /**
  * free_stack - frees a stack
  * @stack: pointer to the stack to be freed
-*/
-void free_stack(stack_t *stack) {
-    stack_t *current = stack;
-    while (current != NULL) {
-        stack_t *next = current->next;
-        free(current);
-        current = next;
-    }
+ */
+void free_stack(stack_t *stack)
+{
+	stack_t *current = stack;
+
+	while (current != NULL)
+	{
+		stack_t *next = current->next;
+
+		free(current);
+		current = next;
+	}
 }
