@@ -56,52 +56,35 @@ int main(int argc, char *argv[])
  */
 void process_line(stack_t **stack, const char *line, unsigned int line_number)
 {
-	char *token;
-	char opcode[256];
-	int value;
+    char opcode[256];
+    int value;
 
-	token = strtok((char*)line, " \t\n");
-
-	if (token != NULL)
-	{
-		strncpy(opcode, token, sizeof(opcode));
-		opcode[sizeof(opcode) - 1] = '\0';
-
-		token = strtok(NULL, " \t\n");
-		if (token != NULL)
-		{
-			if (isdigit(token[0]) || (token[0] == '-' && isdigit(token[1])))
-		{
-			value = atoi(token);
-		}
-		else
-		{
-			fprintf(stderr, "L%u: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);
-		}
-		}
-	}
-	if (sscanf(line, "%s %d", opcode, &value) == 2 ||
-			sscanf(line, "%s", opcode) == 1)
-	{
-		if (strcmp(opcode, "push") == 0)
-		{
-			push(stack, value, line_number);
-		}
-		else if (strcmp(opcode, "pall") == 0)
-		{
-			pall(stack, line_number);
-		}
-		else
-		{
-			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
-			exit(EXIT_FAILURE);
-		}
-	}
-	else
-	{
-		exit(EXIT_FAILURE);
-	}
+    if (sscanf(line, "%255s %d", opcode, &value) == 2 || sscanf(line, "%255s", opcode) == 1)
+    {
+        if (strcmp(opcode, "push") == 0)
+        {
+            if (sscanf(line, "%*s %d", &value) != 1)
+            {
+                fprintf(stderr, "L%u: usage: push integer\n", line_number);
+                exit(EXIT_FAILURE);
+            }
+            push(stack, value, line_number);
+        }
+        else if (strcmp(opcode, "pall") == 0)
+        {
+            pall(stack, line_number);
+        }
+        else
+        {
+            fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+            exit(EXIT_FAILURE);
+        }
+    }
+    else
+    {
+        fprintf(stderr, "L%u: invalid input format\n", line_number);
+        exit(EXIT_FAILURE);
+    }
 }
 
 /**
