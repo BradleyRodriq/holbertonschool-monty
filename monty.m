@@ -1,7 +1,6 @@
-push 1
-push 2
-push 3
-pall
-unknown_opcode
-push 4
+push 5
+push 10
+push -3
+push abc
+push 15
 pall
