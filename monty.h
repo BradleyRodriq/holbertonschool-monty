@@ -41,6 +41,20 @@ void pint(Stack *stack);
 void swap(Stack **stack, unsigned int line_number);
 
 /**
+ * add - Adds the top two elements of the stack.
+ * @stack: Pointer to the stack.
+ * @line_number: Line number in the Monty file.
+ */
+void add(Stack **stack, unsigned int line_number);
+
+/**
+ * nop - Does nothing.
+ * @stack: Pointer to the stack.
+ * @line_number: Line number in the Monty file.
+ */
+void nop(Stack **stack, unsigned int line_number);
+
+/**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
  * @prev: points to the previous element of the stack (or queue)
