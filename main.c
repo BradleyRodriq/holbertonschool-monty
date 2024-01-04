@@ -3,6 +3,7 @@
 #include <string.h>
 #include "monty.h"
 
+void free_stack(stack_t *stack);
 void process_line(stack_t **stack, const char *line, unsigned int line_number);
 
 /**
@@ -40,6 +41,7 @@ int main(int argc, char *argv[])
 	}
 
 	fclose(file);
+	free_stack(stack);
 
 	return (EXIT_SUCCESS);
 }
@@ -73,3 +75,15 @@ void process_line(stack_t **stack, const char *line, unsigned int line_number)
 	}
 }
 
+/**
+ * free_stack - frees a stack
+ * @stack: pointer to the stack to be freed
+*/
+void free_stack(stack_t *stack) {
+    stack_t *current = stack;
+    while (current != NULL) {
+        stack_t *next = current->next;
+        free(current);
+        current = next;
+    }
+}
