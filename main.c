@@ -72,7 +72,8 @@ void process_line(stack_t **stack, const char *line, unsigned int line_number)
 	}
 	else
 	{
-		fprintf(stderr, "Error in line %u: Invalid format\n", line_number);
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+		exit(EXIT_FAILURE);
 	}
 }
 
