@@ -60,7 +60,7 @@ void process_line(stack_t **stack, const char *line, unsigned int line_number)
 	{
 		if (strcmp(opcode, "push") == 0)
 		{
-			push(stack, value);
+			push(stack, value, line_number);
 		}
 		else if (strcmp(opcode, "pall") == 0)
 		{
