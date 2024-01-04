@@ -69,6 +69,11 @@ void process_line(stack_t **stack, const char *line, unsigned int line_number)
 		{
 			pall(stack, line_number);
 		}
+		else
+		{
+			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+			exit(EXIT_FAILURE);
+		}
 	}
 	else
 	{
