@@ -12,8 +12,13 @@
  */
 void push(stack_t **stack, int value, unsigned int line_number)
 {
-	(void) line_number;
+	int value;
 
+	if (kstrto32(value_str, "%d", &value) != 1)
+	{
+		fprintf(stderr, "L%u: usage: push integer");
+		exit(EXIT_FAILURE);
+	}
 	stack_t *new_node = malloc(sizeof(stack_t));
 
 	if (new_node == NULL)
