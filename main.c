@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 {
 	if (argc != 2)
 	{
-		fprintf(stderr, "Usage: %s <monty_file>\n", argv[0]);
+		fprintf(stderr, "Usage: monty_file\n");
 		return (EXIT_FAILURE);
 	}
 
@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
 	if (file == NULL)
 	{
 		printf("Error: Can't open file %s\n", argv[1]);
+		fclose(file);
 		return (EXIT_FAILURE);
 	}
 
