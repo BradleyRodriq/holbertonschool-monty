@@ -4,39 +4,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define STACK_SIZE 100
+/**
+ * struct Stack - Structure to represent the stack.
+ * @n: The integer value stored in the stack node.
+ * @next: Pointer to the next node in the stack.
+ */
+typedef struct Stack {
+    int n;
+    struct Stack *next;
+} Stack;
 
 /**
- * struct stack_t - Stack structure
- * @array: The array representing the stack
- * @sp: The stack pointer pointing to the top of the stack
+ * initializeStack - Initializes the stack.
+ * @stack: Pointer to the stack to be initialized.
  */
-typedef struct stack_t
-{
-	int array[STACK_SIZE];
-	int sp;
-} stack_t;
-
-
+void initializeStack(Stack *stack);
 
 /**
- * push - Pushes a value onto the stack
- * @value: The value to be pushed onto the stack
+ * pop - Pops a value from the stack.
+ * @stack: Pointer to the stack.
+ * Return: The value popped from the stack.
  */
-void push(int value);
+int pop(Stack *stack);
 
 /**
- * pop - Pops a value from the stack
- *
- * Return: The value popped from the stack
+ * pint - Prints the value at the top of the stack, followed by a new line.
+ * @stack: Pointer to the top of the stack.
  */
-int pop(void);
+void pint(Stack *stack);
 
 /**
- * pint - Prints the value at the top of the stack, followed by a new line
- * If the stack is empty, prints an error message and exits with EXIT_FAILURE
+ * swap - Swap the top two elements of the stack.
+ * @stack: Pointer to the stack.
+ * @line_number: Line number in the Monty file.
  */
-void pint(void);
+void swap(Stack **stack, unsigned int line_number);
 
 #endif
-

@@ -1,19 +1,23 @@
 #include "monty.h"
 
 /**
- * pint - Prints the value athe the top of the stack, followed by a new line
+ * pint - Prints the value at the top of the stack, followed by a new line
+ * @stack: Pointer to the top of the stack
  */
-
-void pint()
+void pint(Stack *stack)
 {
-    if (stack == stack)
-	{
-		printf("%d\n", stack);
-		break;
-	}
-	else
-	{
-		fprintf(stderr, "Error: can't pint, stack empty\n");
-		exit(EXIT_FAILURE);
-	}
+    if (stack == NULL)
+    {
+        fprintf(stderr, "Error: can't pint, stack is NULL\n");
+        exit(EXIT_FAILURE);
+    }
+    else if (stack->next == NULL)
+    {
+        fprintf(stderr, "Error: can't pint, stack empty\n");
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        printf("%d\n", stack->next->n);
+    }
 }

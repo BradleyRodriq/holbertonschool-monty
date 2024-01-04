@@ -1,16 +1,19 @@
-#include "main.h"
+#include "monty.h"
 
 /**
- * pop - Pops a value from the stack
- *
- * Return: The value popped from the stack
+ * pop - Pops a value from the stack.
+ * @stack: Pointer to the stack.
+ * Return: The value popped from the stack.
  */
-
-int pop(void)
+int pop(Stack *stack)
 {
-    if (stack_t.sp >= 0)
+    if (stack != NULL && stack->next != NULL)
     {
-        return stack_t.array[stack_t.sp--];
+        int value = stack->n;
+        Stack *temp = stack;
+        stack = stack->next;
+        free(temp);
+        return value;
     }
     else
     {
