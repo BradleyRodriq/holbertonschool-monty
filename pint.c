@@ -6,9 +6,9 @@
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
-	if (*stack != NULL && (*stack)->next != NULL)
+	if (*stack != NULL)
 	{
-		printf("%d\n", (*stack)->next != NULL);
+		printf("%d\n", (*stack)->n);
 	}
 	else
 	{
