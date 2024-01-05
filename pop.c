@@ -5,6 +5,7 @@
 /**
  * pop - Pops a value from the stack.
  * @stack: Pointer to the stack.
+ * @line_number: the number of the line
  * Return: The value popped from the stack.
  */
 int pop(stack_t **stack, unsigned int line_number)
