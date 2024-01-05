@@ -6,7 +6,7 @@
  * @line_number: Line number in the Monty file.
  */
 
-void sub(Stack **stack, unsigned int line_number)
+void sub(stack **stack, unsigned int line_number)
 {
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
@@ -15,6 +15,6 @@ void sub(Stack **stack, unsigned int line_number)
 	}
 	
 	(*stack)->next->n -= (*stack)->n;
-	pop(*stack);
+	pop(stack, line_number);
 }
 
