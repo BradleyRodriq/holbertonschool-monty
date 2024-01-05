@@ -6,42 +6,6 @@
 #include <stdlib.h>
 
 /**
- * struct Stack - Structure to represent the stack.
- * @n: The integer value stored in the stack node.
- * @next: Pointer to the next node in the stack.
- */
-typedef struct Stack {
-    int n;
-    struct Stack *next;
-} Stack;
-
-/**
- * initializeStack - Initializes the stack.
- * @stack: Pointer to the stack to be initialized.
- */
-void initializeStack(Stack *stack);
-
-/**
- * pop - Pops a value from the stack.
- * @stack: Pointer to the stack.
- * Return: The value popped from the stack.
- */
-int pop(Stack *stack);
-
-/**
- * pint - Prints the value at the top of the stack, followed by a new line.
- * @stack: Pointer to the top of the stack.
- */
-void pint(Stack *stack);
-
-/**
- * swap - Swap the top two elements of the stack.
- * @stack: Pointer to the stack.
- * @line_number: Line number in the Monty file.
- */
-void swap(Stack **stack, unsigned int line_number);
-
-/**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
  * @prev: points to the previous element of the stack (or queue)
@@ -52,9 +16,9 @@ void swap(Stack **stack, unsigned int line_number);
  */
 typedef struct stack_s
 {
-int n;
-struct stack_s *prev;
-struct stack_s *next;
+  int n;
+  struct stack_s *prev;
+  struct stack_s *next;
 } stack_t;
 
 /**
@@ -67,13 +31,16 @@ struct stack_s *next;
  */
 typedef struct instruction_s
 {
-char *opcode;
-void (*f)(stack_t **stack, unsigned int line_number);
+  char *opcode;
+  void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 void push(stack_t **stack, int value, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void process_line(stack_t **stack, const char *line, unsigned int line_number);
 void free_stack(stack_t *stack);
+void swap(stack_t **stack, unsigned int line_number);
+int pop(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
 
 #endif
