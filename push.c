@@ -14,6 +14,7 @@ void push(stack_t **stack, int value, unsigned int line_number)
 {
 	char str_value[20];
 	int i;
+	stack_t *new_node = malloc(sizeof(stack_t));
 
 	sprintf(str_value, "%d", value);
 
@@ -33,9 +34,6 @@ void push(stack_t **stack, int value, unsigned int line_number)
 			exit(EXIT_FAILURE);
 		}
 	}
-
-	stack_t *new_node = malloc(sizeof(stack_t));
-
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");

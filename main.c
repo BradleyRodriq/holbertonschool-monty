@@ -16,13 +16,16 @@ void process_line(stack_t **stack, const char *line, unsigned int line_number);
  */
 int main(int argc, char *argv[])
 {
+	FILE *file = fopen(argv[1], "r");
+	stack_t *stack = NULL;
+	unsigned int line_number = 1;
+	char line [256];
+
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		return (EXIT_FAILURE);
 	}
-
-	FILE *file = fopen(argv[1], "r");
 
 	if (file == NULL)
 	{
@@ -30,12 +33,6 @@ int main(int argc, char *argv[])
 		fclose(file);
 		exit(EXIT_FAILURE);
 	}
-
-	stack_t *stack = NULL;
-	unsigned int line_number = 1;
-
-	char line[256];
-
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
 		process_line(&stack, line, line_number);
@@ -86,6 +83,14 @@ void process_line(stack_t **stack, const char *line, unsigned int line_number)
 		else if (strcmp(opcode, "swap") == 0)
 		{
 			swap(stack, line_number);
+		}
+		else if (strcmp(opcode, "add") == 0)
+		{
+			add(stack, line_number);
+		}
+		else if (strcmp(opcode, "nop") == 0)
+		{
+			nop(stack, line_number);
 		}
 		else
 		{
