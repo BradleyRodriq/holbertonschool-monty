@@ -11,7 +11,7 @@ void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = *stack;
 	int size = 0;
-	
+
 	(void) line_number;
 
 	while (current != NULL)

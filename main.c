@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	FILE *file = fopen(argv[1], "r");
 	stack_t *stack = NULL;
 	unsigned int line_number = 1;
-	char line [256];
+	char line[256];
 
 	if (argc != 2)
 	{
