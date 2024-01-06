@@ -96,6 +96,10 @@ void process_line(stack_t **stack, const char *line, unsigned int line_number)
 		{
 			sub(stack, line_number);
 		}
+		else if (strcmp(opcode, "div") == 0)
+		{
+			_div(stack, line_number);
+		}
 		else
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
