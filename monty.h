@@ -4,7 +4,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <ctype.h>
+#include <string.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -46,5 +47,7 @@ void nop(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
+int is_blank(const char *line);
+void opcode_exe(stack_t **stack, const char *line, int value, unsigned int line_number);
 
 #endif
