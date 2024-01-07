@@ -6,6 +6,7 @@
 
 void free_stack(stack_t *stack);
 void process_line(stack_t **stack, const char *line, unsigned int line_number);
+int is_blank(const char *line);
 
 /**
  * main - opens the monty file to be interpreted
@@ -35,6 +36,11 @@ int main(int argc, char *argv[])
 	}
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
+		if (is_blank(line))
+		{
+			line_number++;
+			continue;
+		}
 		process_line(&stack, line, line_number);
 		line_number++;
 	}
@@ -108,7 +114,7 @@ void process_line(stack_t **stack, const char *line, unsigned int line_number)
 	}
 	else
 	{
-		fprintf(stderr, "L%u: invalid input format\n", line_number);
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -128,4 +134,22 @@ void free_stack(stack_t *stack)
 		free(current);
 		current = next;
 	}
+}
+
+/**
+ * is_blank - checks line for blank content
+ * @line: the line to be checked
+ * Return: if blank, i < 0
+ */
+int is_blank(const char *line)
+{
+	int i = strlen(line) - 1;
+
+	while (i >= 0 && (line[i] == ' ' ||
+				line[i] == '\t' || line[i] == '\n' ||
+				line[i] == '\r'))
+	{
+		i--;
+	}
+	return (i < 0);
 }
