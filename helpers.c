@@ -79,3 +79,4 @@ int is_blank(const char *line)
 	}
 	return (i < 0);
 }
+
