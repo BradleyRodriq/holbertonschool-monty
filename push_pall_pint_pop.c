@@ -12,6 +12,12 @@ void push(stack_t **stack, int value, unsigned int line_number)
 	int i;
 	stack_t *new_node = malloc(sizeof(stack_t));
 
+		if (new_node == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		free(new_node);
+		exit(EXIT_FAILURE);
+	}
 	snprintf(str_value, sizeof(str_value), "%d", value);
 
 	for (i = 0; str_value[i]; i++)
@@ -29,12 +35,6 @@ void push(stack_t **stack, int value, unsigned int line_number)
 			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
 		}
-	}
-	if (new_node == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		free(new_node);
-		exit(EXIT_FAILURE);
 	}
 
 	new_node->n = value;
